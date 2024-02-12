@@ -1,0 +1,5 @@
+Django==4.2
+django-cleanup==8.1.0
+easy-thumbnails==2.8.5
+pillow==10.2.0
+gunicorn==21.2.0
