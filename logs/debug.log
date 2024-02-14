@@ -1,0 +1,39 @@
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python Core\Django 3-oy\shop\main\views.py", line 11, in get
+    if cache.get("products"):
+       ^^^^^
+NameError: name 'cache' is not defined
+"GET / HTTP/1.1" 500 85265
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python Core\Django 3-oy\shop\main\my_middleware.py", line 5, in wrap
+    url = request.get_full_url()
+          ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'WSGIRequest' object has no attribute 'get_full_url'. Did you mean: 'get_full_path'?
+"GET / HTTP/1.1" 500 70135
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python Core\Django 3-oy\shop\main\my_middleware.py", line 5, in wrap
+    url = request.get_url()
+          ^^^^^^^^^^^^^^^
+AttributeError: 'WSGIRequest' object has no attribute 'get_url'. Did you mean: 'get_port'?
+"GET / HTTP/1.1" 500 70095

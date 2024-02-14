@@ -113,15 +113,25 @@
                                                     <a href="product-details.html"><img src="{{ product.image.url }}" alt="product"></a>
                                                     <div class="product-content">
                                                         <h4 class="title"><a href="product-details.html">
-                                                            {{ product.title }}
+                                                            {{ product.name }}
                                                         </a></h4>
                                                         <div class="price">
-                                                            <span class="sale-price">$40.00</span>
+                                                            <span class="sale-price"> {{ product.price }} </span>
+                                                            <br>
+                                                            <span class="sale-price"> {{ product.category.name }} </span>
+                                                        </div>
+                                                        <div>
+                                                            {% for tag in  product.tags.all %}
+                                                                <span>{{ tag }}</span>
+                                                            {% endfor %}    
                                                         </div>
                                                     </div>
                                                     <ul class="product-meta">
                                                         <li><a class="action" data-bs-toggle="modal" data-bs-target="#quickView" href="#"><i class="pe-7s-search"></i></a></li>
-                                                        <li><a class="action" href="#"><i class="pe-7s-shopbag"></i></a></li>
+                                                      
+                                                        <li><a data-product-id="{{ product.id }}"  class="action add_cart" href="#"><i class="pe-7s-shopbag"></i></a></li>
+
+
                                                         <li><a class="action" href="#"><i class="pe-7s-like"></i></a></li>
                                                     </ul>
                                                 </div>
@@ -129,6 +139,43 @@
                                             </div>
 
                                             {% endfor %}
+
+                                            <script>
+                                                document.querySelectorAll(".add_cart").forEach(function(el, index){
+                                                   
+                                                    el.addEventListener("click", function(e){
+                                                        e.preventDefault();
+                                                        let id = el.getAttribute("data-product-id");
+                                                        let url = "/cart/add/" + id;
+                                                        // window.location.href = url;
+
+                                                        fetch(url,
+                                                        {
+                                                            method: "GET",
+                                                            headers: {
+                                                                "Content-Type": "application/json",
+                                                            },
+                                                            
+                                                        }).then(function(response){
+                                                            return response.json();
+                                                        }).then(function(res){
+                                                            
+                                                            if(res.status == "success"){
+                                                                alert("Tovar savatchaga qo'shildi ! ")
+                                                                
+                                                            }else{
+                                                                alert("Tovar savatchaga qo'shilgan ! ")
+
+                                                            }
+                                                            
+                                                        });
+
+
+                                                    })
+                                                });
+
+                                              
+                                            </script>
 
 
 

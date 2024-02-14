@@ -4,6 +4,8 @@ from .models import *
 # Register your models here.
 
 admin.site.register(Tag)
+admin.site.register(Cart)
+admin.site.register(Cart_detail)
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):

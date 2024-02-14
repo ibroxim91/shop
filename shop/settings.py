@@ -36,14 +36,78 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    # 'django.contrib.sites',
     'django.contrib.staticfiles',
     "main",
+    "cart",
      "debug_toolbar",
+
+
 ]
+
+# SITE_ID = 1
+# Provider specific settings
+# SOCIALACCOUNT_PROVIDERS = {
+#     'google': {
+#         # For each OAuth based provider, either add a ``SocialApp``
+#         # (``socialaccount`` app) containing the required client
+#         # credentials, or list them here:
+#         'APP': {
+#             'client_id': '123',
+#             'secret': '456',
+#             'key': ''
+#         }
+#     }
+# }
+
 
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+
+
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": f"{BASE_DIR}/cache",
+        "TIMEOUT": 86000,
+        "OPTIONS": {"MAX_ENTRIES": 100},
+    }
+}
+
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+     "formatters": {
+        "verbose": {
+            "format": "{levelname} {asctime} {module} {process:d} {thread:d} {message}",
+            "style": "{",
+        },
+        "simple": {
+            "format": "{levelname} {message}",
+            "style": "{",
+        },
+    },
+    "handlers": {
+        "file": {
+            "level": "ERROR",
+            "class": "logging.FileHandler",
+            "filename": f"{BASE_DIR}/logs/debug.log",
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["file"],
+            "level": "ERROR",
+            "propagate": True,
+        },
+    },
+}
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -53,10 +117,23 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    "main.my_middleware.my_md",
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #  "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'shop.urls'
+
+
+# AUTHENTICATION_BACKENDS = [
+ 
+#     # Needed to login by username in Django admin, regardless of `allauth`
+#     'django.contrib.auth.backends.ModelBackend',
+
+#     # `allauth` specific authentication methods, such as login by email
+#     'allauth.account.auth_backends.AuthenticationBackend',
+   
+# ]
 
 TEMPLATES = [
     {

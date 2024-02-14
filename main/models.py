@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 class Tag(models.Model):
     name = models.CharField(verbose_name="Nomi",max_length=100)
-  
+
 
     def __str__(self) -> str:
         return self.name
@@ -52,6 +52,8 @@ class Cart(models.Model):
     total_summa = models.PositiveIntegerField()
     products = models.ManyToManyField(Cart_detail)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    
 
 class Order_detail(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
